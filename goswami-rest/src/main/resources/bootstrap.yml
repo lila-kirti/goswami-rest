@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: goswami-core
+server:
+  servlet-path: /
+cxf:
+  path: /goswami-rest
+  jaxrs:
+    component-scan: true
