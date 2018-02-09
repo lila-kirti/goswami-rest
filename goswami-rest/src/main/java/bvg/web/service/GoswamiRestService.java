@@ -4,9 +4,10 @@ import bvg.api.CatalogueService;
 import bvg.model.MediaModel;
 import bvg.web.GoswamiRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import javax.ws.rs.core.Response;
 import java.util.Date;
 import java.util.List;
 
@@ -21,8 +22,8 @@ public class GoswamiRestService implements GoswamiRestApi {
     private CatalogueService catalogueService;
 
     @Override
-    public Response echo() {
-        return Response.ok(new Date().getTime()).build();
+    public ResponseEntity echo() {
+        return new ResponseEntity(new Date().getTime(), HttpStatus.OK);
     }
 
     @Override
