@@ -29,8 +29,8 @@ public class ApplicationConfiguration {
 
     private ApiInfo metaData() {
         return new ApiInfo(
-                "Goswami REST API",
-                "Описание сервисов REST для goswami.ru",
+                "Описание сервисов goswami.ru",
+                null,
                 "1.0",
                 null,
                 new Contact(null, "http://goswami.ru", "admin@goswami.ru"),

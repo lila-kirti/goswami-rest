@@ -1,7 +1,10 @@
 package bvg.web.service;
 
 import bvg.api.CatalogueService;
+import bvg.api.NewsService;
+import bvg.model.ImageModel;
 import bvg.model.MediaModel;
+import bvg.model.NewsModel;
 import bvg.web.GoswamiRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,14 +23,21 @@ public class GoswamiRestService implements GoswamiRestApi {
 
     @Autowired
     private CatalogueService catalogueService;
+    @Autowired
+    private NewsService newsService;
 
     @Override
-    public ResponseEntity echo() {
-        return new ResponseEntity(new Date().getTime(), HttpStatus.OK);
+    public List<ImageModel> getTopCarouselData() {
+        return newsService.getCarousel();
     }
 
     @Override
-    public List<MediaModel> getMedia() {
-        return catalogueService.getMedia();
+    public List<NewsModel> getTopNews() {
+        return newsService.getNews();
+    }
+
+    @Override
+    public List<MediaModel> getTopAudio() {
+        return null;
     }
 }

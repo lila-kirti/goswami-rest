@@ -23,5 +23,5 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect
 
 server:
-  port: 8087
+  port: 8088
   servlet-path: /
