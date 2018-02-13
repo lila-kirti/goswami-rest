@@ -1,7 +1,5 @@
 package bvg.model;
 
-import bvg.entity.MediaEntity;
-
 import java.io.Serializable;
 
 /**
@@ -80,17 +78,5 @@ public class MediaModel implements Serializable {
 
     public void setDuration(String duration) {
         this.duration = duration;
-    }
-
-    public MediaModel populateFrom(MediaEntity entity) {
-        this.id = entity.getId();
-        this.title = entity.getTitle();
-        this.teaser = entity.getTeaser();
-        this.body = entity.getBody();
-        this.type = entity.getType();
-        this.imgUri = entity.getImgUri();
-        this.fileUri = entity.getFileUri();
-        this.duration = entity.getDuration();
-        return this;
     }
 }

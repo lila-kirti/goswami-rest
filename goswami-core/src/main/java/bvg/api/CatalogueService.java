@@ -1,6 +1,5 @@
 package bvg.api;
 
-import bvg.entity.MediaEntity;
 import bvg.model.MediaModel;
 
 import java.util.List;
