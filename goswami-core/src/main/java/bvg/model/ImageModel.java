@@ -1,11 +1,15 @@
 package bvg.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
  * @author lgalimova
  * @since 13.02.2018
  */
+@ApiModel("Данные изображения")
 public class ImageModel implements Serializable {
     private String imageUrl;
     private String targetUrl;
@@ -20,6 +24,7 @@ public class ImageModel implements Serializable {
         this.order = order;
     }
 
+    @ApiModelProperty("URL изображения")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -28,6 +33,7 @@ public class ImageModel implements Serializable {
         this.imageUrl = imageUrl;
     }
 
+    @ApiModelProperty("URL, на который осуществляется переход при клике на изображении")
     public String getTargetUrl() {
         return targetUrl;
     }
@@ -36,6 +42,7 @@ public class ImageModel implements Serializable {
         this.targetUrl = targetUrl;
     }
 
+    @ApiModelProperty("Порядок в списке")
     public Integer getOrder() {
         return order;
     }

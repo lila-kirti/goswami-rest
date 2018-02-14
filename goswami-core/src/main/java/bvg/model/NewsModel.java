@@ -1,5 +1,8 @@
 package bvg.model;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -7,7 +10,9 @@ import java.util.Date;
  * @author lgalimova
  * @since 13.02.2018
  */
-public class NewsModel implements Serializable{
+
+@ApiModel("Данные карточки главной страницы")
+public class NewsModel implements Serializable {
     private Integer id;
     private String imageUrl;
     private String title;
@@ -29,6 +34,7 @@ public class NewsModel implements Serializable{
         this.type = type;
     }
 
+    @ApiModelProperty("Идентификатор")
     public Integer getId() {
         return id;
     }
@@ -37,6 +43,7 @@ public class NewsModel implements Serializable{
         this.id = id;
     }
 
+    @ApiModelProperty("URL изображения")
     public String getImageUrl() {
         return imageUrl;
     }
@@ -45,6 +52,7 @@ public class NewsModel implements Serializable{
         this.imageUrl = imageUrl;
     }
 
+    @ApiModelProperty("Заголовок")
     public String getTitle() {
         return title;
     }
@@ -53,6 +61,7 @@ public class NewsModel implements Serializable{
         this.title = title;
     }
 
+    @ApiModelProperty("Аннотация")
     public String getAnnotation() {
         return annotation;
     }
@@ -61,6 +70,7 @@ public class NewsModel implements Serializable{
         this.annotation = annotation;
     }
 
+    @ApiModelProperty("Дата")
     public Date getDate() {
         return date;
     }
@@ -69,6 +79,7 @@ public class NewsModel implements Serializable{
         this.date = date;
     }
 
+    @ApiModelProperty("URL, на который ссылается карточка")
     public String getTargetUrl() {
         return targetUrl;
     }
@@ -77,6 +88,7 @@ public class NewsModel implements Serializable{
         this.targetUrl = targetUrl;
     }
 
+    @ApiModelProperty("Тип карточки (audio, collection, book, article)")
     public String getType() {
         return type;
     }

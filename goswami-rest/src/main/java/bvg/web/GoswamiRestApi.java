@@ -21,15 +21,16 @@ import java.util.List;
 @Api(value = "Описание сервисов goswami.ru")
 public interface GoswamiRestApi {
 
-    @RequestMapping(value = "/top/carousel", method= RequestMethod.GET)
-    @ApiOperation(value = "Получение изображений для карусели", tags = "Главная страница")
+    @RequestMapping(value = "/top/carousel", method = RequestMethod.GET)
+    @ApiOperation(value = "Получение изображений для карусели", tags = "Главная страница",
+            response = ImageModel.class, responseContainer = "List")
     List<ImageModel> getTopCarouselData();
 
-    @RequestMapping(value = "/top/news", method= RequestMethod.GET)
+    @RequestMapping(value = "/top/news", method = RequestMethod.GET)
     @ApiOperation(value = "Получение данных карточек", tags = "Главная страница")
     List<NewsModel> getTopNews();
 
-    @RequestMapping(value = "/top/audio", method= RequestMethod.GET)
+    @RequestMapping(value = "/top/audio", method = RequestMethod.GET)
     @ApiOperation(value = "Получение списка последних лекций", tags = "Главная страница")
     List<MediaModel> getTopAudio();
 

@@ -1,5 +1,7 @@
 package bvg.model;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +18,7 @@ public class MediaModel implements Serializable {
     private String fileUri;
     private String duration;
 
+    @ApiModelProperty("Идентификатор")
     public Long getId() {
         return id;
     }
