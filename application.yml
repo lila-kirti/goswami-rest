@@ -1,6 +1,28 @@
 spring:
   application:
     name: goswami-core
+  cloud:
+    consul:
+      bvg.api.config:
+        failFast: false
+# ===============================
+# = Hibernate datasource
+# ===============================
+  datasource:
+#    url: jdbc:postgresql://localhost:5433/goswami
+#    username: postgres
+#    password: postgres
+    url: jdbc:postgresql://goswami.ru:5432/bvg
+    username: goswami.ru
+    password:
+# ===============================
+# = JPA configurations
+# ===============================
+  jpa:
+    show-sql: true
+    database-platform: POSTGRESQL
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL94Dialect
 
 server:
   port: 10000

@@ -1,21 +1,31 @@
 package bvg.model;
 
+import bvg.entity.MediaEntity;
+import bvg.util.JsonDateSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * @author lgalimova
  * @since 25.01.2018
  */
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@ApiModel("Данные медиа")
 public class MediaModel implements Serializable {
     private Long id;
     private String title;
     private String teaser;
     private String body;
     private String type;
-    private String imgUri;
-    private String fileUri;
+    private String imageUrl;
+    private Date date;
+    private String fileUrl;
     private String duration;
 
     @ApiModelProperty("Идентификатор")
@@ -27,6 +37,7 @@ public class MediaModel implements Serializable {
         this.id = id;
     }
 
+    @ApiModelProperty("Заголовок")
     public String getTitle() {
         return title;
     }
@@ -43,6 +54,7 @@ public class MediaModel implements Serializable {
         this.teaser = teaser;
     }
 
+    @ApiModelProperty("Содержимое")
     public String getBody() {
         return body;
     }
@@ -51,6 +63,7 @@ public class MediaModel implements Serializable {
         this.body = body;
     }
 
+    @ApiModelProperty("Тип медиа (лекция, альбом, книга, статья)")
     public String getType() {
         return type;
     }
@@ -59,20 +72,31 @@ public class MediaModel implements Serializable {
         this.type = type;
     }
 
-    public String getImgUri() {
-        return imgUri;
+    @ApiModelProperty("URL изображения")
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImgUri(String imgUri) {
-        this.imgUri = imgUri;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
-    public String getFileUri() {
-        return fileUri;
+    @ApiModelProperty("Дата")
+    @JsonSerialize(using = JsonDateSerializer.class)
+    public Date getDate() {
+        return date;
     }
 
-    public void setFileUri(String fileUri) {
-        this.fileUri = fileUri;
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public String getFileUrl() {
+        return fileUrl;
+    }
+
+    public void setFileUrl(String fileUrl) {
+        this.fileUrl = fileUrl;
     }
 
     public String getDuration() {
@@ -81,5 +105,17 @@ public class MediaModel implements Serializable {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public MediaModel populateFrom(MediaEntity entity) {
+        this.id = entity.getId();
+        this.title = entity.getTitle();
+        this.teaser = entity.getTeaser();
+        this.body = entity.getBody();
+        this.type = entity.getType();
+        this.imageUrl = entity.getImgUri();
+        this.fileUrl = entity.getFileUri();
+        this.duration = entity.getDuration();
+        return this;
     }
 }

@@ -7,11 +7,8 @@ import bvg.model.MediaModel;
 import bvg.model.NewsModel;
 import bvg.web.GoswamiRestApi;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -37,7 +34,7 @@ public class GoswamiRestService implements GoswamiRestApi {
     }
 
     @Override
-    public List<MediaModel> getTopAudio() {
-        return null;
+    public List<MediaModel> getTopAudio(Integer count) {
+        return catalogueService.getLastAudio(count);
     }
 }

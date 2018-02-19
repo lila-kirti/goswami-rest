@@ -9,5 +9,6 @@ import java.util.List;
  * @since 22.01.2018
  */
 public interface CatalogueService {
+    List<MediaModel> getLastAudio(Integer count);
     List<MediaModel> getMedia();
 }

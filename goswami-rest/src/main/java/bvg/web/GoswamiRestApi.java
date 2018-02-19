@@ -5,9 +5,10 @@ import bvg.model.MediaModel;
 import bvg.model.NewsModel;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.http.ResponseEntity;
+import io.swagger.annotations.ApiParam;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -32,6 +33,6 @@ public interface GoswamiRestApi {
 
     @RequestMapping(value = "/top/audio", method = RequestMethod.GET)
     @ApiOperation(value = "Получение списка последних лекций", tags = "Главная страница")
-    List<MediaModel> getTopAudio();
+    List<MediaModel> getTopAudio(@ApiParam(value = "Количество лекций в ответе", required = true) @RequestParam(defaultValue="10") Integer count);
 
 }
