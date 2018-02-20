@@ -12,7 +12,7 @@ spring:
 #    url: jdbc:postgresql://localhost:5433/goswami
 #    username: postgres
 #    password: postgres
-    url: jdbc:postgresql://goswami.ru:5432/bvg
+    url: jdbc:postgresql://localhost:5432/bvg
     username: goswami.ru
     password:
 # ===============================
