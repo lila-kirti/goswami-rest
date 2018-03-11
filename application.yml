@@ -9,12 +9,12 @@ spring:
 # = Hibernate datasource
 # ===============================
   datasource:
-    url: jdbc:postgresql://localhost:5433/goswami
-    username: postgres
-    password: postgres
-#    url: jdbc:postgresql://localhost:5432/bvg
-#    username: goswami.ru
-#    password:
+#    url: jdbc:postgresql://localhost:5433/goswami
+#    username: postgres
+#    password: postgres
+    url: jdbc:postgresql://localhost:5432/bvg
+    username: goswami.ru
+    password:
 # ===============================
 # = JPA configurations
 # ===============================
