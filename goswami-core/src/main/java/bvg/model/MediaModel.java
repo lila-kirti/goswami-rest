@@ -1,6 +1,8 @@
 package bvg.model;
 
+import bvg.entity.AuthorEntity;
 import bvg.entity.MediaEntity;
+import bvg.entity.VenueEntity;
 import bvg.util.JsonDateSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
@@ -9,13 +11,14 @@ import io.swagger.annotations.ApiModelProperty;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author lgalimova
  * @since 25.01.2018
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonSerialize(include=JsonSerialize.Inclusion.NON_NULL)
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_NULL)
 @ApiModel("Данные медиа")
 public class MediaModel implements Serializable {
     private Long id;
@@ -27,6 +30,9 @@ public class MediaModel implements Serializable {
     private Date date;
     private String fileUrl;
     private String duration;
+    private List<SimpleDirectory> category;
+    private List<AuthorEntity> author;
+    private VenueEntity venue;
 
     @ApiModelProperty("Идентификатор")
     public Long getId() {
@@ -99,6 +105,7 @@ public class MediaModel implements Serializable {
         this.fileUrl = fileUrl;
     }
 
+    @ApiModelProperty("Длительность")
     public String getDuration() {
         return duration;
     }
@@ -107,13 +114,39 @@ public class MediaModel implements Serializable {
         this.duration = duration;
     }
 
+    @ApiModelProperty("Категории")
+    public List<SimpleDirectory> getCategory() {
+        return category;
+    }
+
+    public void setCategory(List<SimpleDirectory> category) {
+        this.category = category;
+    }
+
+    @ApiModelProperty("Авторы")
+    public List<AuthorEntity> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(List<AuthorEntity> author) {
+        this.author = author;
+    }
+
+    @ApiModelProperty("Место")
+    public VenueEntity getVenue() {
+        return venue;
+    }
+
+    public void setVenue(VenueEntity venue) {
+        this.venue = venue;
+    }
+
     public MediaModel populateFrom(MediaEntity entity) {
         this.id = entity.getId();
+        this.imageUrl = entity.getImgUri();
         this.title = entity.getTitle();
-        this.teaser = entity.getTeaser();
         this.body = entity.getBody();
         this.type = entity.getType();
-        this.imageUrl = entity.getImgUri();
         this.fileUrl = entity.getFileUri();
         this.duration = entity.getDuration();
         return this;

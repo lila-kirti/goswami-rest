@@ -3,6 +3,7 @@ package bvg.entity;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * @author lgalimova
@@ -39,6 +40,15 @@ public class MediaEntity implements Serializable {
 
     @Column(name = "occurrence_date")
     private Date occurrenceDate;
+
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private VenueEntity venue;
+
+    @ManyToMany (targetEntity = AuthorEntity.class)
+    @JoinTable (name = "media_authors", joinColumns = @JoinColumn (name = "media_id"),
+            inverseJoinColumns = @JoinColumn (name = "author_id"))
+    private Set<AuthorEntity> authors;
 
     public Long getId() {
         return id;
@@ -110,5 +120,21 @@ public class MediaEntity implements Serializable {
 
     public void setOccurrenceDate(Date occurrenceDate) {
         this.occurrenceDate = occurrenceDate;
+    }
+
+    public VenueEntity getVenue() {
+        return venue;
+    }
+
+    public void setVenue(VenueEntity venue) {
+        this.venue = venue;
+    }
+
+    public Set<AuthorEntity> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<AuthorEntity> authors) {
+        this.authors = authors;
     }
 }
